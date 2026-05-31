@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Solicitud Inversión Descuentos POS 2026</title>
+  <!-- CONFIG GAS: busca DEPLOYMENT_ID en el <script> al final del archivo -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --rojo: #CC0000;
+      --rojo-oscuro: #990000;
+      --rojo-claro: #ff1a1a;
+      --amarillo: #FFD700;
+      --amarillo-claro: #FFF176;
+      --gris-fondo: #f4f4f4;
+      --gris-borde: #ddd;
+      --blanco: #ffffff;
+      --texto-oscuro: #1a1a1a;
+      --texto-medio: #444;
+      --sombra: 0 4px 20px rgba(0,0,0,0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Open Sans', sans-serif; background: var(--gris-fondo); color: var(--texto-oscuro); min-height: 100vh; }
+    header { background: var(--blanco); border-bottom: 5px solid var(--rojo); padding: 18px 40px; display: flex; align-items: center; justify-content: space-between; box-shadow: var(--sombra); }
+    .logo-wrap { display: flex; align-items: center; gap: 6px; }
+    .logo-svg { height: 52px; width: auto; }
+    header h1 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.55rem; color: var(--rojo); text-transform: uppercase; letter-spacing: 0.04em; text-align: right; line-height: 1.2; }
+    header h1 span { display: block; font-size: 1rem; font-weight: 600; color: var(--texto-medio); text-transform: none; letter-spacing: 0; }
+    main { max-width: 1100px; margin: 36px auto; padding: 0 20px 60px; }
+    .card { background: var(--blanco); border-radius: 10px; box-shadow: var(--sombra); margin-bottom: 28px; overflow: hidden; }
+    .card-header { background: var(--rojo); color: var(--blanco); font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 11px 22px; display: flex; align-items: center; gap: 10px; }
+    .card-header .icon { width: 20px; height: 20px; opacity: 0.9; }
+    .card-body { padding: 26px 28px; }
+    .grid { display: grid; gap: 20px 24px; }
+    .g2 { grid-template-columns: repeat(2, 1fr); }
+    .g3 { grid-template-columns: repeat(3, 1fr); }
+    .g4 { grid-template-columns: repeat(4, 1fr); }
+    @media (max-width: 780px) {
+      .g2, .g3, .g4 { grid-template-columns: 1fr; }
+      header { flex-direction: column; gap: 12px; text-align: center; }
+      header h1 { text-align: center; }
+    }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    label { font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 700; color: var(--rojo-oscuro); text-transform: uppercase; letter-spacing: 0.06em; }
+    label .req { color: var(--rojo-claro); margin-left: 2px; }
+    input[type="text"], input[type="number"], input[type="date"], select, textarea { width: 100%; padding: 10px 14px; border: 1.5px solid var(--gris-borde); border-radius: 6px; font-family: 'Open Sans', sans-serif; font-size: 0.9rem; color: var(--texto-oscuro); background: #fafafa; transition: border-color 0.2s, box-shadow 0.2s, background 0.2s; outline: none; }
+    input:focus, select:focus, textarea:focus { border-color: var(--rojo); background: var(--blanco); box-shadow: 0 0 0 3px rgba(204,0,0,0.1); }
+    .highlight input, .highlight select, .highlight textarea { background: var(--amarillo-claro); border-color: var(--amarillo); }
+    .highlight input:focus, .highlight select:focus, .highlight textarea:focus { background: #fffde7; border-color: #f9a825; box-shadow: 0 0 0 3px rgba(255,215,0,0.25); }
+    textarea { resize: vertical; min-height: 90px; }
+    select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%23CC0000' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 34px; }
+    .span2 { grid-column: span 2; }
+    .span3 { grid-column: span 3; }
+    @media (max-width: 780px) { .span2, .span3 { grid-column: span 1; } }
+    .form-footer { display: flex; justify-content: flex-end; gap: 14px; margin-top: 10px; }
+    .btn { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 12px 30px; border-radius: 6px; border: none; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn-secondary { background: transparent; border: 2px solid var(--gris-borde); color: var(--texto-medio); }
+    .btn-secondary:hover { border-color: var(--rojo); color: var(--rojo); }
+    .btn-primary { background: var(--rojo); color: var(--blanco); box-shadow: 0 4px 14px rgba(204,0,0,0.35); }
+    .btn-primary:hover { background: var(--rojo-oscuro); box-shadow: 0 6px 18px rgba(204,0,0,0.45); }
+    .btn-primary:disabled { background: #aaa; box-shadow: none; cursor: not-allowed; transform: none; }
+    .divider { border: none; border-top: 1px solid #eee; margin: 4px 0 20px; }
+    .nota { font-size: 0.78rem; color: #888; margin-top: 4px; }
+    .input-wrap { position: relative; }
+    .input-wrap .suffix { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 0.8rem; color: #999; pointer-events: none; }
+    .input-wrap input { padding-right: 36px; }
+    #toast { position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: none; min-width: 280px; border-radius: 10px; padding: 16px 22px; font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 600; box-shadow: 0 8px 30px rgba(0,0,0,0.2); animation: slideIn 0.3s ease; }
+    #toast.success { background: #1b5e20; color: #fff; }
+    #toast.error { background: #b71c1c; color: #fff; }
+    #toast.sending { background: #1565c0; color: #fff; }
+    @keyframes slideIn { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+    .version-badge {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #666;
+      background: #f0f0f0;
+      border: 1px solid #ddd;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.04em;
+    }
+    .version-badge strong { color: var(--rojo); }
+    footer.app-footer {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-wrap">
+    <svg class="logo-svg" viewBox="0 0 220 70" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="8" width="215" height="54" rx="6" fill="#CC0000"/>
+      <text x="14" y="52" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="38" fill="#ffffff" letter-spacing="-1">Aburrá</text>
+      <line x1="0" y1="68" x2="215" y2="68" stroke="#FFD700" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <h1>
+    Solicitud Inversión Descuentos POS
+    <span>Formulario de registro 2026</span>
+  </h1>
+  <div class="version-badge" id="versionBadgeHeader" title="Debe coincidir con la versión del script en Google">
+    HTML <strong id="versionHtml">—</strong> · API <strong id="versionApiEsperada">—</strong>
+  </div>
+</header>
+
+<main>
+  <div id="avisoConexion" style="max-width:1100px;margin:0 auto 16px;padding:14px 20px;border-radius:8px;background:#fff3cd;border:1px solid #ffc107;font-size:0.88rem;line-height:1.5;">
+    <strong>Estado API:</strong> <span id="estadoApi">Comprobando…</span><br/>
+    <a id="linkProbarApi" href="#" target="_blank" rel="noopener" style="color:#990000;font-weight:600;">Abrir URL del script</a>
+    — debe mostrar <code>"version":"2.0.1"</code>. En GitHub Pages la comprobación automática puede fallar; el envío del formulario igual funciona si la URL del script está bien.
+  </div>
+  <div id="avisoErrorApi" style="display:none;max-width:1100px;margin:0 auto 16px;padding:14px 20px;border-radius:8px;background:#ffebee;border:1px solid #c62828;font-size:0.88rem;color:#b71c1c;"></div>
+
+  <form id="solicitudForm"
+        action=""
+        method="POST"
+        target="gasFrame"
+        accept-charset="UTF-8"
+        onsubmit="return handleSubmit(event)">
+
+    <input type="hidden" name="versionFormulario" id="versionFormulario" value=""/>
+
+    <!-- 1. DATOS DEL VENDEDOR -->
+    <div class="card">
+      <div class="card-header">
+        <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        Datos del Vendedor
+      </div>
+      <div class="card-body">
+        <div class="grid g4">
+          <div class="field highlight">
+            <label>Regional <span class="req">*</span></label>
+            <input type="text" name="regional" placeholder="Ej: Antioquia" required/>
+          </div>
+          <div class="field highlight">
+            <label>Canal <span class="req">*</span></label>
+            <select name="canal" required>
+              <option value="">Seleccionar...</option>
+              <option>Autoservicio</option>
+              <option>Cadena Regional</option>
+              <option>Distribuidor</option>
+              <option>Mayorista</option>
+              <option>Minimercado</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Código Zona <span class="req">*</span></label>
+            <input type="text" name="codigoZona" placeholder="Ej: 001" required/>
+          </div>
+          <div class="field">
+            <label>Nombre Vendedor <span class="req">*</span></label>
+            <input type="text" name="nombreVendedor" placeholder="Nombre completo" required/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. DATOS DEL CLIENTE -->
+    <div class="card">
+      <div class="card-header">
+        <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+        </svg>
+        Datos del Cliente
+      </div>
+      <div class="card-body">
+        <div class="grid g3">
+          <div class="field">
+            <label>NIT Cliente <span class="req">*</span></label>
+            <input type="text" name="nitCliente" placeholder="Ej: 900.123.456-7" required/>
+          </div>
+          <div class="field span2">
+            <label>Nombre Cliente / Sede <span class="req">*</span></label>
+            <input type="text" name="nombreCliente" placeholder="Razón social o nombre del punto de venta" required/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. DATOS DE LA SOLICITUD -->
+    <div class="card">
+      <div class="card-header">
+        <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        Datos de la Solicitud
+      </div>
+      <div class="card-body">
+        <div class="grid g4">
+          <div class="field">
+            <label>Mes Solicitud <span class="req">*</span></label>
+            <select name="mesSolicitud" required>
+              <option value="">Seleccionar...</option>
+              <option>Enero</option><option>Febrero</option><option>Marzo</option><option>Abril</option>
+              <option>Mayo</option><option>Junio</option><option>Julio</option><option>Agosto</option>
+              <option>Septiembre</option><option>Octubre</option><option>Noviembre</option><option>Diciembre</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Fecha Solicitud <span class="req">*</span></label>
+            <input type="date" name="fechaSolicitud" required/>
+          </div>
+          <div class="field highlight">
+            <label>Tipo Actividad <span class="req">*</span></label>
+            <select name="tipoActividad" required>
+              <option value="">Seleccionar...</option>
+              <option>Venta POS</option>
+              <option>Aniversario</option>
+              <option>Separata</option>
+              <option>Rotación fecha corta</option>
+              <option>Teleferia-Distribuidor</option>
+            </select>
+          </div>
+          <div class="field highlight">
+            <label>Objetivo <span class="req">*</span></label>
+            <select name="objetivo" required>
+              <option value="">Seleccionar...</option>
+              <option>Incrementar rotación</option>
+              <option>Recuperar inventario</option>
+              <option>Lanzamiento</option>
+              <option>Defender participación</option>
+              <option>Entrada a cliente nuevo</option>
+              <option>Apoyo Calendario comercial</option>
+              <option>Calendario comercial</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. DATOS DE LA ACTIVIDAD -->
+    <div class="card">
+      <div class="card-header">
+        <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+          <line x1="7" y1="7" x2="7.01" y2="7"/>
+        </svg>
+        Datos de la Actividad
+      </div>
+      <div class="card-body">
+        <div class="grid g4">
+          <div class="field span2">
+            <label>Producto <span class="req">*</span></label>
+            <input type="text" name="producto" placeholder="Nombre o referencia del producto" required/>
+          </div>
+          <div class="field">
+            <label>Mes Actividad <span class="req">*</span></label>
+            <select name="mesActividad" required>
+              <option value="">Seleccionar...</option>
+              <option>Enero</option><option>Febrero</option><option>Marzo</option><option>Abril</option>
+              <option>Mayo</option><option>Junio</option><option>Julio</option><option>Agosto</option>
+              <option>Septiembre</option><option>Octubre</option><option>Noviembre</option><option>Diciembre</option>
+            </select>
+          </div>
+          <div class="field"></div>
+          <div class="field">
+            <label>Fecha Inicial <span class="req">*</span></label>
+            <input type="date" name="fechaInicial" id="fechaInicial" required onchange="calcDuracion()"/>
+          </div>
+          <div class="field">
+            <label>Fecha Final <span class="req">*</span></label>
+            <input type="date" name="fechaFinal" id="fechaFinal" required onchange="calcDuracion()"/>
+          </div>
+          <div class="field">
+            <label>Duración Actividad (días)</label>
+            <input type="number" name="duracionDias" id="duracionDias" placeholder="Auto" readonly
+                   style="background:#f0f0f0; color:#666; cursor:not-allowed;"/>
+            <span class="nota">Se calcula automáticamente</span>
+          </div>
+          <div class="field">
+            <label>% Descuento <span class="req">*</span></label>
+            <div class="input-wrap">
+              <input type="number" name="pctDescuento" placeholder="0" min="0" max="100" step="0.01" required/>
+              <span class="suffix">%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. DATOS DEL PDV -->
+    <div class="card">
+      <div class="card-header">
+        <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        Datos del Punto de Venta
+      </div>
+      <div class="card-body">
+        <div class="grid g3">
+          <div class="field">
+            <label>Inventario PDV (unidades)</label>
+            <input type="number" name="inventarioPDV" placeholder="Ej: 100" min="0"/>
+          </div>
+          <div class="field">
+            <label>Colocación Adicional (unidades)</label>
+            <input type="number" name="colocacionAdicional" placeholder="Ej: 50" min="0"/>
+          </div>
+          <div class="field">
+            <label>Precio Punto de Venta ($) <span class="req">*</span></label>
+            <div class="input-wrap">
+              <input type="number" name="precioPDV" placeholder="0" min="0" step="0.01" required/>
+              <span class="suffix">$</span>
+            </div>
+          </div>
+        </div>
+
+        <hr class="divider" style="margin-top:24px;"/>
+
+        <div class="grid">
+          <div class="field highlight">
+            <label>¿Qué pasaría si no haces la actividad? <span class="req">*</span></label>
+            <select name="quePasaria" required>
+              <option value="">Seleccionar...</option>
+              <option>Nada</option>
+              <option>Pierdo volumen</option>
+              <option>Pierdo credibilidad con el cliente</option>
+              <option>Pierdo espacio</option>
+              <option>No vuelven a tener en cuenta a la marca</option>
+              <option>Se vence el producto</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="form-footer">
+      <button type="button" class="btn btn-secondary" onclick="limpiarFormulario()">Limpiar</button>
+      <button type="submit" id="btnEnviar" class="btn btn-primary">Enviar Solicitud →</button>
+    </div>
+  </form>
+</main>
+
+<footer class="app-footer">
+  Solicitud POS · Formulario v<span id="versionFooter">—</span> ·
+  Implementación <span id="deploymentIdFooter">—</span>
+</footer>
+
+<!-- MODAL ÉXITO -->
+<div id="modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:999; align-items:center; justify-content:center;">
+  <div style="background:#fff; border-radius:12px; padding:40px 48px; max-width:420px; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <div style="width:64px; height:64px; background:#CC0000; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
+      <svg width="30" height="30" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+    <h2 style="font-family:Montserrat,sans-serif; font-weight:800; color:#CC0000; font-size:1.3rem; margin-bottom:10px;">¡Solicitud Enviada!</h2>
+    <p style="color:#555; font-size:0.9rem; line-height:1.6;">Enviado con formulario v<strong id="versionModal">—</strong>.<br/>
+    Si el script está bien publicado, verás la fila en la pestaña <strong>Respuestas</strong> de tu Google Sheet.<br/><br/>
+    <a id="linkSheet" href="https://docs.google.com/spreadsheets/d/1e5usrI760NEjWF-oJRx49R-LgxZQ1LNzf3iP5ODx7vQ/edit" target="_blank" rel="noopener" style="color:#CC0000;">Abrir hoja de respuestas</a></p>
+    <button onclick="cerrarModal()" class="btn btn-primary" style="margin-top:24px;">Nueva Solicitud</button>
+  </div>
+</div>
+
+<!-- Envío oculto hacia Google Apps Script -->
+<iframe name="gasFrame" id="gasFrame" title="Envío" style="display:none;width:0;height:0;border:0;"></iframe>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+  // ═══════════════════════════════════════════════════════════════
+  // CONFIGURACIÓN — Cambiar VERSION al publicar HTML + Apps Script juntos
+  // ═══════════════════════════════════════════════════════════════
+  const APP_VERSION = '2.0.1';
+  const DEPLOYMENT_ID = 'AKfycbxS_3_wNQCfx6If4TTJLBeG8K5lGOMtd438jF4fqW9CS5DVcEVxvMLqnNNASNIq5PKj';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/' + DEPLOYMENT_ID + '/exec';
+
+  function showToast(msg, type) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = type;
+    t.style.display = 'block';
+    if (type !== 'sending') setTimeout(() => { t.style.display = 'none'; }, 5000);
+  }
+
+  function calcDuracion() {
+    const fi = document.getElementById('fechaInicial').value;
+    const ff = document.getElementById('fechaFinal').value;
+    if (fi && ff) {
+      const diff = Math.round((new Date(ff) - new Date(fi)) / 86400000);
+      document.getElementById('duracionDias').value = diff >= 0 ? diff : '';
+    }
+  }
+
+  function handleSubmit(e) {
+    const form = document.getElementById('solicitudForm');
+    if (!form.checkValidity()) {
+      e.preventDefault();
+      form.reportValidity();
+      return false;
+    }
+
+    form.action = SCRIPT_URL;
+
+    const btn = document.getElementById('btnEnviar');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    showToast('⏳ Enviando datos a Google Sheets...', 'sending');
+
+    setTimeout(function () {
+      document.getElementById('toast').style.display = 'none';
+      document.getElementById('modal').style.display = 'flex';
+      btn.disabled = false;
+      btn.textContent = 'Enviar Solicitud →';
+    }, 3000);
+
+    return true;
+  }
+
+  function cerrarModal() {
+    document.getElementById('modal').style.display = 'none';
+    document.getElementById('solicitudForm').reset();
+    document.getElementById('duracionDias').value = '';
+  }
+
+  function limpiarFormulario() {
+    if (confirm('¿Deseas limpiar todos los campos?')) {
+      document.getElementById('solicitudForm').reset();
+      document.getElementById('duracionDias').value = '';
+    }
+  }
+
+  function aplicarVersionEnPagina() {
+    document.getElementById('versionFormulario').value = APP_VERSION;
+    document.getElementById('versionHtml').textContent = APP_VERSION;
+    document.getElementById('versionApiEsperada').textContent = APP_VERSION;
+    document.getElementById('versionFooter').textContent = APP_VERSION;
+    document.getElementById('versionModal').textContent = APP_VERSION;
+    document.getElementById('deploymentIdFooter').textContent = DEPLOYMENT_ID.slice(0, 12) + '…';
+    document.title = 'Solicitud POS v' + APP_VERSION;
+  }
+
+  function comprobarApi() {
+    const estado = document.getElementById('estadoApi');
+    const avisoErr = document.getElementById('avisoErrorApi');
+    const pingUrl = SCRIPT_URL + '?action=ping';
+
+    fetch(pingUrl)
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        const vApi = data.version || '(sin versión — script de prueba viejo)';
+        document.getElementById('versionApiEsperada').textContent = vApi;
+        if (data.version === APP_VERSION) {
+          estado.innerHTML = '<span style="color:#1b5e20">✓ API v' + data.version + ' — listo para guardar</span>';
+          avisoErr.style.display = 'none';
+        } else {
+          estado.innerHTML = '<span style="color:#b71c1c">✗ HTML v' + APP_VERSION + ' pero API: ' + vApi + '</span>';
+          avisoErr.style.display = 'block';
+          avisoErr.innerHTML =
+            '<strong>No guardará en la hoja.</strong> Sigue <strong>EMPEZAR-DESDE-CERO.md</strong>: pega <code>Codigo.gs</code>, <code>testWriteRow</code>, Nueva implementación, y <code>DEPLOYMENT_ID</code> en este HTML.';
+        }
+      })
+      .catch(function () {
+        document.getElementById('versionApiEsperada').textContent = 'ver enlace';
+        estado.innerHTML =
+          '<span style="color:#e65100">⚠ No se puede verificar desde GitHub (normal). ' +
+          'Abre el enlace: si ves <code>"version":"' + APP_VERSION + '"</code>, puedes enviar.</span>';
+        avisoErr.style.display = 'none';
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    aplicarVersionEnPagina();
+    const estado = document.getElementById('estadoApi');
+    const avisoErr = document.getElementById('avisoErrorApi');
+
+    if (!DEPLOYMENT_ID || DEPLOYMENT_ID.indexOf('PEGAR') !== -1) {
+      estado.innerHTML = '<span style="color:#b71c1c">✗ Falta DEPLOYMENT_ID en index.html (ver EMPEZAR-DESDE-CERO.md)</span>';
+      avisoErr.style.display = 'block';
+      avisoErr.innerHTML = 'Pega el ID de tu implementación web en <code>DEPLOYMENT_ID</code> y recarga la página (F5 o cierra y vuelve a abrir el archivo).';
+      document.getElementById('btnEnviar').disabled = true;
+      return;
+    }
+
+    document.getElementById('solicitudForm').action = SCRIPT_URL;
+    document.getElementById('linkProbarApi').href = SCRIPT_URL + '?action=ping';
+    const today = new Date().toISOString().split('T')[0];
+    document.querySelector('[name="fechaSolicitud"]').value = today;
+    comprobarApi();
+  });
+</script>
+</body>
+</html>
